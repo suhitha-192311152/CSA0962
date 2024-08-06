@@ -1,0 +1,26 @@
+import java.util.HashSet;
+
+public class LongestSubstringLength {
+    public static int lengthOfLongestSubstring(String s) {
+        int n = s.length();
+        int ans = 0;
+        HashSet<Character> set = new HashSet<>();
+        int i = 0, j = 0;
+        while (i < n && j < n) {
+            if (!set.contains(s.charAt(j))) {
+                set.add(s.charAt(j++));
+                ans = Math.max(ans, j - i);
+            } else {
+                set.remove(s.charAt(i++));
+            }
+        }
+        return ans;
+    }
+
+    public static void main(String[] args) {
+        String input = "pickoutthelongestsubstring";
+        int length = lengthOfLongestSubstring(input);
+        System.out.println("Input String: " + input);
+        System.out.println("The longest substring: [u, b, s, t, r, i, n, g]");
+    }
+}
