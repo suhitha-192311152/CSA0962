@@ -1,0 +1,35 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class SecondMostFrequentChar {
+    public static void main(String[] args) {
+        String input = "successes";
+        char result = findSecondMostFrequentChar(input);
+        System.out.println("The given string is: " + input);
+        System.out.println("The second most frequent char in the string is: " + result);
+    }
+
+    public static char findSecondMostFrequentChar(String input) {
+        Map<Character, Integer> charFrequency = new HashMap<>();
+        for (char c : input.toCharArray()) {
+            charFrequency.put(c, charFrequency.getOrDefault(c, 0) + 1);
+        }
+
+        int maxFreq = 0;
+        int secondMaxFreq = 0;
+        char secondMostFreqChar = ' ';
+
+        for (char c : charFrequency.keySet()) {
+            int freq = charFrequency.get(c);
+            if (freq > maxFreq) {
+                secondMaxFreq = maxFreq;
+                maxFreq = freq;
+            } else if (freq > secondMaxFreq && freq != maxFreq) {
+                secondMaxFreq = freq;
+                secondMostFreqChar = c;
+            }
+        }
+
+        return secondMostFreqChar;
+    }
+}
