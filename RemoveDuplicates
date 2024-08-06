@@ -1,0 +1,18 @@
+public class RemoveDuplicates {
+    public static void main(String[] args) {
+        String givenString = "the quick brown fox";
+        String maskString = "queen";
+        
+        StringBuilder newString = new StringBuilder();
+        
+        for (char c : givenString.toCharArray()) {
+            if (maskString.indexOf(c) == -1 || newString.indexOf(String.valueOf(c)) != -1) {
+                newString.append(c);
+            }
+        }
+        
+        System.out.println("The given string is: " + givenString);
+        System.out.println("The given mask string is: " + maskString);
+        System.out.println("The new string is: " + newString.toString());
+    }
+}
