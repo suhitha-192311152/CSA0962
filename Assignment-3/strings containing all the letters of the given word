@@ -1,0 +1,32 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+        List<String> strings = new ArrayList<>();
+        strings.add("rabbit");
+        strings.add("bribe");
+        strings.add("dog");
+
+        String word = "bib";
+
+        System.out.println("The given strings are: " + strings.toString());
+        System.out.println("The given word is: " + word + "\n");
+
+        System.out.println("The strings containing all the letters of the given word are: ");
+        for (String str : strings) {
+            if (containsAllCharacters(str, word)) {
+                System.out.println(str);
+            }
+        }
+    }
+
+    private static boolean containsAllCharacters(String str, String word) {
+        for (char c : word.toCharArray()) {
+            if (str.indexOf(c) == -1) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
